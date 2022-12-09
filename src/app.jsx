@@ -1,57 +1,145 @@
-import React, { useState, useEffect } from "react";
-import { Router, Link } from "wouter";
+import React from "react";
+import Particles from "react-tsparticles";
+import "./styles/particles.css";
 
-/**
- * This code defines the react app
- *
- * Imports the router functionality to provide page navigation
- * Defines the Home function outlining the content on each page
- * Content specific to each page (Home and About) is defined in their components in /pages
- * Each page content is presented inside the overall structure defined here
- * The router attaches the page components to their paths
- */
-
-// Import and apply CSS stylesheet
-import "./styles/styles.css";
-
-// Where all of our pages come from
-import PageRouter from "./components/router.jsx";
-
-// The component that adds our Meta tags to the page
-import Seo from "./components/seo.jsx";
-window.onload = () => {
-  console.log("reload");
-};
-// Home function that is reflected across the site
-export default function Home() {
+export default function App() {
   return (
-    <Router>
-      <Seo />
-      <main role="main" className="wrapper">
-        <div className="content">
-          {/* Router specifies which component to insert here as the main content */}
-          <PageRouter />
-        </div>
-      </main>
-      {/* Footer links to Home and About, Link elements matched in router.jsx */}
-      <footer className="footer">
-        <div className="links">
-          <Link href="/">Home</Link>
-          <span className="divider">|</span>
-          <Link href="/about">About</Link>
-        </div>
-        <a
-          className="btn--remix"
-          target="_top"
-          href="https://glitch.com/edit/#!/remix/glitch-hello-react"
-        >
-          <img
-            src="https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2FLogo_Color.svg?v=1618199565140"
-            alt=""
-          />
-          Remix on Glitch
-        </a>
-      </footer>
-    </Router>
+    <Particles
+      options={{
+        fullScreen: {
+          enable: true,
+          zIndex: 0
+        },
+        particles: {
+          number: {
+            value: 200,
+            limit: 300,
+            density: {
+              enable: true,
+              value_area: 800
+            }
+          },
+          color: {
+            value: "#ffffff"
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000"
+            },
+            polygon: {
+              nb_sides: 5
+            },
+            image: {
+              src: "images/github.svg",
+              width: 100,
+              height: 100
+            }
+          },
+          opacity: {
+            value: 0.5,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 1,
+              opacity_min: 0.5,
+              sync: false
+            }
+          },
+          size: {
+            value: 30,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 10,
+              size_min: 10,
+              sync: false
+            }
+          },
+          line_linked: {
+            enable: true,
+            distance: 100,
+            color: "#ffffff",
+            opacity: 1,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 3,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200
+            }
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onHover: {
+              enable: true,
+              mode: "bubble",
+              parallax: {
+                enable: false,
+                force: 60,
+                smooth: 10
+              }
+            },
+            onClick: {
+              enable: true,
+              mode: "push"
+            },
+            resize: true
+          },
+          modes: {
+            grab: {
+              distance: 400,
+              lineLinked: {
+                opacity: 1
+              }
+            },
+            bubble: {
+              distance: 400,
+              size: 100,
+              duration: 2,
+              opacity: 1,
+              speed: 2
+            },
+            repulse: {
+              distance: 200
+            },
+            push: {
+              particles_nb: 4
+            },
+            remove: {
+              particles_nb: 2
+            }
+          }
+        },
+        backgroundMask: {
+          enable: true,
+          cover: {
+            color: {
+              value: {
+                r: 0,
+                g: 0,
+                b: 0
+              }
+            }
+          }
+        },
+        retina_detect: true,
+        fps_limit: 60,
+        background: {
+          image: "url('https://particles.js.org/images/background3.jpg')"
+        }
+      }}
+    />
   );
 }
