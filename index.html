@@ -1,16 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    
-    <!-- This is the main template for the site, with index.jsx building the content and behavior -->
-    
-    <title>Hello React!</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="https://glitch.com/favicon.ico" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.jsx"></script>
-  </body>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<html>
+
+<head>
+    <link rel="stylesheet" href="./css/index.css">
+    <title>drink maker</title>
+</head>
+
+<body>
+    <div class="drink-maker">
+        <div class="drink">
+            <div class="cup-handle">
+                <div class="cup"></div>
+                <div class="handle"></div>
+            </div>
+            <canvas id="glCanvas"></canvas>
+        </div>
+
+        <div id="elementButtons"></div>
+    </div>
+
+    <!-- Webglyphs dependencies -->
+    <script type="text/javascript" src="twgl-3.2.2-full.min.js"></script>
+    <script type="module" src="./js/sand.js"></script>
+</body>
+
 </html>
+</meta>
