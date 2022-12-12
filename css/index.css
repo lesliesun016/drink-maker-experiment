@@ -1,14 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
 
 :root {
-    --width: 20vw;
-    --height: 56vh;
+    --cupWidth: 400px;
+    --cupHeight: 450px;
 
-    --cupWidth: 20vw;
-    --cupHeight: 56vh;
-
-    --canvasWidth: 20.5vw;
-    --canvasHeight: 60vh;
+    --canvasWidth: 400px;
+    --canvasHeight: 450px;
 }
 
 * {
@@ -32,8 +29,12 @@ canvas {
     height: var(--canvasHeight);
 
     position: absolute;
-    top: -2vh;
+    /* top: -2vh; */
     border-radius: 0 0 18% 18%;
+}
+
+canvas:hover {
+    cursor: pointer;
 }
 
 .drink-maker {
@@ -43,21 +44,13 @@ canvas {
 
     gap: 10%;
     position: relative;
-    top: 20vh;
+    top: 10vh;
 }
 
 .drink {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.cup-handle {
-    background-color: transparent;
-    position: relative;
-    width: var(--width);
-    height: var(--height);
-    left: 4vw;
 }
 
 .cup {

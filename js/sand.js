@@ -2,6 +2,12 @@ import { elements } from "./elements.js";
 
 const defaultElement = elements.clear;
 
+// Audio
+const water = new Audio("./audio/water.wav");
+const coffeebean = new Audio("./audio/coffeebean.wav");
+const squirt = new Audio("./audio/squirt.wav");
+const powder = new Audio("./audio/powder.wav");
+
 function shuffleArray(array) {
   const newArray = [];
   let i = 0;
@@ -557,8 +563,8 @@ function begin() {
   gl.enable(gl.CULL_FACE);
   gl.clearColor(1, 1, 1, 1);
 
-  const bufferWidth = 64;
-  const bufferHeight = 64;
+  const bufferWidth = 128;
+  const bufferHeight = 128;
 
   let currentBuffer = newBuffer(bufferWidth, bufferHeight, defaultElement);
   let reserveBuffer = newBuffer(bufferWidth, bufferHeight, defaultElement);
@@ -625,6 +631,8 @@ function begin() {
     function (event) {
       drawing = true;
       lastMouseEvent = event;
+
+      playAudio(selectedElement.name);
     },
     false
   );
@@ -662,13 +670,60 @@ function begin() {
       button.classList.add("elementButton");
       button.style = `background-color: ${hex};`;
       document.getElementById("elementButtons").appendChild(button);
-      button.onclick = function (event) {
+
+      button.name = button.textContent;
+      button.onclick = function () {
         selectedElement = element;
         for (const other of elementButtons) {
           other.classList.remove("elementButtonSelected");
+          other.innerHTML = other.name;
         }
         button.classList.add("elementButtonSelected");
+        button.innerHTML = rename(button.name);
       };
+    }
+  }
+
+  function rename(name) {
+    switch (name) {
+      case "clear":
+        return "air";
+      case "water":
+        return "saliva";
+      case "coffee bean":
+        return "mud";
+      case "milk":
+        return "vomit";
+      case "chocolate syrup":
+        return "poop";
+      case "vanilla syrup":
+        return "booger";
+      case "cinnamon powder":
+        return "carrot";
+      case "ginger powder":
+        return "banana";
+      case "matcha powder":
+        return "celery";
+    }
+  }
+
+  function playAudio(name) {
+    let audio = undefined;
+    if (name === "water" || name === "milk") {
+      audio = water;
+    }
+    if (name === "coffee bean") {
+      audio = coffeebean;
+    }
+    if (name.includes("syrup")) {
+      audio = squirt;
+    }
+    if (name.includes("powder")) {
+      audio = powder;
+    }
+    if (audio != undefined) {
+      audio.pause();
+      audio.play();
     }
   }
 
