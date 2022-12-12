@@ -31,7 +31,7 @@ canvas {
     display: block;
     width: var(--canvasWidth);
     height: var(--canvasHeight);
-    background-color: darkolivegreen;
+
     position: absolute;
     top: -2vh;
     border-radius: 0 0 18% 18%;
@@ -66,18 +66,9 @@ canvas {
     height: var(--cupHeight);
     border: 10px solid black;
     border-radius: 0 0 20% 20%;
-    /* z-index: 100; */
-}
-
-.handle {
-    border: 10px solid black;
-    border-radius: 0 20% 80% 0%;
-    width: var(--handleWidth);
-    height: var(--handleHeight);
-    background: transparent;
+    background-color: transparent;
     position: relative;
-    left: 21vw;
-    top: -100%;
+    /* z-index: 100; */
 }
 
 #elementButtons {
@@ -90,6 +81,7 @@ canvas {
     cursor: pointer;
     display: inline-flex;
     margin: 0.1vw;
+
     color: #000;
     text-align: center;
     font-size: 24px;

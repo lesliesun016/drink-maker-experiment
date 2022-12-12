@@ -22,11 +22,14 @@ function hexColor(element) {
   const red = 1.0 - element.red;
   const green = 1.0 - element.green;
   const blue = 1.0 - element.blue;
+
+  // the last is alpha for opacity
   return (
     "#" +
     (("0" + Math.floor(red * 255).toString(16)).slice(-2) +
       ("0" + Math.floor(green * 255).toString(16)).slice(-2) +
-      ("0" + Math.floor(blue * 255).toString(16)).slice(-2))
+      ("0" + Math.floor(blue * 255).toString(16)).slice(-2)) +
+    "80"
   );
 }
 
@@ -653,7 +656,7 @@ function begin() {
     if (!element.hidden) {
       const button = document.createElement("div");
       elementButtons.push(button);
-      const label = document.createTextNode(elementName);
+      const label = document.createTextNode(element.name);
       button.appendChild(label);
       const hex = hexColor(element);
       button.classList.add("elementButton");
